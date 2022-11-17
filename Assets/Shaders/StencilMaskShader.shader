@@ -4,7 +4,6 @@ Shader "ImpossibleArchitecture/StencilMaskShader"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
         _StencilMask ("Stencil Mask", Int) = 0
     }
     SubShader {
