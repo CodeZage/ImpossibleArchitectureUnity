@@ -6,6 +6,7 @@ namespace Player
     public class PlayerCharacter : MonoBehaviour
     {
         private const float TransitionSpeed = 20.0f;
+        private const float StickToGroundForce = 10;
 
         #region Serialized Fields
 
@@ -13,7 +14,6 @@ namespace Player
         [Header("Movement")] [SerializeField] [Range(0.0f, 10.0f)]
         private float speed = 6.0f;
 
-        [SerializeField] private float stickToGroundForce = 10;
         [SerializeField] [Range(0.0f, 5.0f)] private float gravityMultiplier = 2.0f;
 
         // Camera Settings
@@ -28,12 +28,16 @@ namespace Player
 
         #endregion
 
+        #region Non-serialized Fields
+
         private Camera _camera;
         private float _cameraPitch;
         private CharacterController _characterController;
         private PlayerInputActions _inputActions;
         private Vector3 _restPosition;
         private float _timer;
+
+        #endregion
 
         #region Event Functions
 
@@ -91,7 +95,7 @@ namespace Player
             movementDirection.z *= speed;
 
             if (_characterController.isGrounded)
-                movementDirection.y = -stickToGroundForce;
+                movementDirection.y = -StickToGroundForce;
             else
                 movementDirection += Physics.gravity * gravityMultiplier;
 
