@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StencilMaskMaterial0
+  m_Name: StencilMaskMaterial 0
   m_Shader: {fileID: 4800000, guid: d1a40d2642222de498678be3657d3a66, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
