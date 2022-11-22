@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Portal
@@ -9,48 +10,50 @@ namespace Portal
     {
         #region Serialized Fields
 
-        public Camera mainCamera;
-
-        // One to render to texture, and another to render normally to switch between (preview)
-        public Camera portalCamera;
-        public Transform source;
         public Transform destination;
+
+        #endregion
+
+        #region Private Fields
+
+        private Transform _source;
+        private Camera _mainCamera;
+        private Camera _portalCamera;
 
         #endregion
 
         #region Event Functions
 
+        private void Awake()
+        {
+            _source = transform;
+            _mainCamera = Camera.main;
+            _portalCamera = GetComponentInChildren<Camera>();
+        }
+
         private void LateUpdate()
         {
-            // Rotate Source 180 degrees so PortalCamera is mirror image of MainCamera
-            var destinationFlipRotation =
-                Matrix4x4.TRS(Vector3.zero, Quaternion.AngleAxis(180.0f, Vector3.up), Vector3.one);
-            var sourceInvMat = destinationFlipRotation * source.worldToLocalMatrix;
-
             // Get variables for the main camera to save on function calls.
-            var mainCameraTransform = mainCamera.transform;
+            var mainCameraTransform = _mainCamera.transform;
             var mainCameraPosition = mainCameraTransform.position;
 
             // Calculate translation and rotation of MainCamera in Source space.
-            Vector3 cameraPositionInSourceSpace = sourceInvMat * new Vector4(mainCameraPosition.x,
-                mainCameraPosition.y, mainCameraPosition.z, 1.0f);
-
-            var cameraRotationInSourceSpace =
-                sourceInvMat.rotation * mainCameraTransform.rotation;
-
+            var sourceWorldToLocalMatrix = _source.worldToLocalMatrix;
+            var cameraPositionInSourceSpace = sourceWorldToLocalMatrix * new Vector4(mainCameraPosition.x, mainCameraPosition.y, mainCameraPosition.z, 1.0f);
+            var cameraRotationInSourceSpace = sourceWorldToLocalMatrix.rotation * mainCameraTransform.rotation;
+            
             // Transform Portal Camera to World Space relative to Destination transform,
             // matching the Main Camera position/orientation
             Transform portalCameraTransform;
-            (portalCameraTransform = portalCamera.transform).position =
-                destination.TransformPoint(cameraPositionInSourceSpace);
+            (portalCameraTransform = _portalCamera.transform).position = destination.TransformPoint(cameraPositionInSourceSpace);
             portalCameraTransform.rotation = destination.rotation * cameraRotationInSourceSpace;
 
             // Calculate clip plane for portal (for culling of objects in-between destination camera and portal)
-            var clipPlaneCameraSpace = CalculateClipPlane(portalCamera, destination);
+            var clipPlaneCameraSpace = CalculateClipPlane(_portalCamera, destination);
 
             // Update projection based on new clip plane
             // Note: http://aras-p.info/texts/obliqueortho.html and http://www.terathon.com/lengyel/Lengyel-Oblique.pdf
-            portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
+            _portalCamera.projectionMatrix = _mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
         }
 
         #endregion

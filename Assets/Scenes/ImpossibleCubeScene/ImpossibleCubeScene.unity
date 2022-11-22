@@ -151,17 +151,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514651268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: -0.025999997}
+  m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 931922140}
   - {fileID: 1840824858}
   - {fileID: 1092989190}
   - {fileID: 1257626936}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 2112908211}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &570687534
 GameObject:
@@ -258,7 +258,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -363,7 +363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2844fe755a3ac964e89bd8e589acba8d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2844fe755a3ac964e89bd8e589acba8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -375,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2844fe755a3ac964e89bd8e589acba8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2844fe755a3ac964e89bd8e589acba8d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -729,6 +729,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 40
+--- !u!1001 &1462740966
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6909725
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7228811
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 92.586
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4092844578741883967, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 437205b0f7b53dc42ac5c796ef540df0, type: 2}
+    - target: {fileID: 919132149155446097, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
+      propertyPath: m_Name
+      value: MCh_S_12_Rzezba_Popiersie_Rozy_Loewenfeld
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b02c45a7e4bcf1345935e27b1249de59, type: 3}
 --- !u!1 &1485841019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bc803925d76e7404d858fa18365233d3, type: 3}
@@ -844,6 +917,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 40
+--- !u!4 &2112908211 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2844fe755a3ac964e89bd8e589acba8d, type: 3}
+  m_PrefabInstance: {fileID: 754937884}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9210095433173358452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -853,7 +931,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9210095433439256169, guid: df176524ec276c54583c7c0638adb295, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9210095433439256169, guid: df176524ec276c54583c7c0638adb295, type: 3}
       propertyPath: m_LocalPosition.x

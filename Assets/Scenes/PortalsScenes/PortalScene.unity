@@ -539,11 +539,6 @@ Transform:
   m_Father: {fileID: 1408439340}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!20 &913950718 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 9210095432969026094, guid: df176524ec276c54583c7c0638adb295, type: 3}
-  m_PrefabInstance: {fileID: 1250721960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090622943
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +737,8 @@ GameObject:
   - component: {fileID: 1408439340}
   - component: {fileID: 1408439339}
   - component: {fileID: 1408439338}
-  - component: {fileID: 1408439337}
+  - component: {fileID: 1408439341}
+  - component: {fileID: 1408439342}
   m_Layer: 0
   m_Name: Blueportal
   m_TagString: Untagged
@@ -750,20 +746,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1408439337
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408439336}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1408439338
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -821,8 +803,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408439336}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 13.2, y: 2.99, z: -16.57}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 3.16, y: 2.99, z: -24.74}
   m_LocalScale: {x: 4.5532, y: 4.5532, z: 4.5532}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -830,7 +812,34 @@ Transform:
   - {fileID: 1830447890}
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1408439341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408439336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82da66720d77b8940be573cb5a293c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1278954956}
+--- !u!114 &1408439342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408439336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2400e2e57d49c79381e62dfb2dcc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in: {fileID: 874303522}
+  out: {fileID: 1278954956}
 --- !u!1 &1439008900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1044,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1488669043}
   - component: {fileID: 1488669044}
-  - component: {fileID: 1488669045}
   m_Layer: 0
   m_Name: RedPortalCamera
   m_TagString: Untagged
@@ -1101,23 +1109,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1488669045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488669042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82da66720d77b8940be573cb5a293c48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 913950718}
-  portalCameras:
-  - {fileID: 1488669044}
-  source: {fileID: 1278954956}
-  destination: {fileID: 874303522}
 --- !u!1 &1660939143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1120,8 @@ GameObject:
   - component: {fileID: 1660939147}
   - component: {fileID: 1660939146}
   - component: {fileID: 1660939145}
-  - component: {fileID: 1660939144}
+  - component: {fileID: 1660939148}
+  - component: {fileID: 1660939149}
   m_Layer: 0
   m_Name: Redportal
   m_TagString: Untagged
@@ -1137,20 +1129,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1660939144
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660939143}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1660939145
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1218,6 +1196,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1660939148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660939143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82da66720d77b8940be573cb5a293c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 874303522}
+--- !u!114 &1660939149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660939143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2400e2e57d49c79381e62dfb2dcc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in: {fileID: 1278954956}
+  out: {fileID: 874303522}
 --- !u!1 &1698431464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1830447890}
   - component: {fileID: 1830447891}
-  - component: {fileID: 1830447892}
   m_Layer: 0
   m_Name: BluePortalCamera
   m_TagString: Untagged
@@ -1391,23 +1395,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1830447892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830447889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82da66720d77b8940be573cb5a293c48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 913950718}
-  portalCameras:
-  - {fileID: 1830447891}
-  source: {fileID: 874303522}
-  destination: {fileID: 1278954956}
 --- !u!1 &2081856370
 GameObject:
   m_ObjectHideFlags: 0

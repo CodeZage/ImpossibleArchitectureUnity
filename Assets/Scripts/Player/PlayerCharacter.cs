@@ -9,6 +9,15 @@ namespace Player
         private const float TransitionSpeed = 20.0f;
         private const float StickToGroundForce = 10;
 
+        #region Public Properties
+
+        public Vector3 PreviousPosition { get; private set; }
+        public CharacterController CharacterController { get; private set; }
+        public bool IsTeleporting { get; set; }
+        public Camera Camera { get; private set; }
+
+        #endregion
+
         #region Serialized Fields
 
         // Movement Settings
@@ -31,9 +40,7 @@ namespace Player
 
         #region Non-serialized Fields
 
-        private Camera _camera;
         private float _cameraPitch;
-        private CharacterController _characterController;
         private PlayerInputActions _inputActions;
         private Vector3 _restPosition;
         private float _timer;
@@ -44,8 +51,8 @@ namespace Player
 
         private void Awake()
         {
-            _characterController = GetComponent<CharacterController>();
-            _camera = GetComponentInChildren<Camera>();
+            CharacterController = GetComponent<CharacterController>();
+            Camera = GetComponentInChildren<Camera>();
 
             // Setup input action bindings.
             _inputActions ??= new PlayerInputActions();
@@ -54,15 +61,25 @@ namespace Player
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            _restPosition = _camera.transform.localPosition;
+            _restPosition = Camera.transform.localPosition;
         }
 
         private void Update()
         {
-            _characterController.Move(UpdateMovement(
-                _inputActions.OnFoot.CharacterMovement.ReadValue<Vector2>()));
-            _camera.transform.localEulerAngles = UpdateCameraPitch(
+            PreviousPosition = transform.position;
+
+            if (!IsTeleporting)
+            {
+                // Update movement.
+                CharacterController.Move(UpdateMovement(
+                    _inputActions.OnFoot.CharacterMovement.ReadValue<Vector2>()));
+            }
+            
+            // Update Camera rotation.
+            Camera.transform.localEulerAngles = UpdateCameraPitch(
                 _inputActions.OnFoot.CameraMovement.ReadValue<Vector2>().y);
+
+            // Update Character rotation.
             transform.Rotate(UpdateCharacterRotation(
                 _inputActions.OnFoot.CameraMovement.ReadValue<Vector2>().x));
         }
@@ -88,14 +105,14 @@ namespace Player
             movementDirection.Normalize();
 
             // Get a normal for the surface that is being touched to move along it
-            Physics.SphereCast(tf.position, _characterController.radius, Vector3.down, out var hitInfo,
-                _characterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+            Physics.SphereCast(tf.position, CharacterController.radius, Vector3.down, out var hitInfo,
+                CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             movementDirection = Vector3.ProjectOnPlane(movementDirection, hitInfo.normal).normalized;
 
             movementDirection.x *= speed;
             movementDirection.z *= speed;
 
-            if (_characterController.isGrounded)
+            if (CharacterController.isGrounded)
                 movementDirection.y = -StickToGroundForce;
             else
                 movementDirection += Physics.gravity * gravityMultiplier;
@@ -107,29 +124,29 @@ namespace Player
 
         private void UpdateHeadMovement(Vector3 movement)
         {
-            if (!_characterController.isGrounded || !headMovementEnabled) return;
+            if (!CharacterController.isGrounded || !headMovementEnabled) return;
 
             if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.z) > 0.1f)
             {
                 _timer += bobFrequency * Time.deltaTime;
 
-                var localPosition = _camera.transform.localPosition;
+                var localPosition = Camera.transform.localPosition;
                 localPosition = new Vector3(
                     Mathf.Lerp(localPosition.x, Mathf.Cos(_timer / 2) * bobAmplitude, TransitionSpeed),
                     Mathf.Lerp(localPosition.y, _restPosition.y + Mathf.Sin(_timer) * bobAmplitude, TransitionSpeed),
                     localPosition.z
                 );
-                _camera.transform.localPosition = localPosition;
+                Camera.transform.localPosition = localPosition;
             }
             else
             {
-                var localPosition = _camera.transform.localPosition;
+                var localPosition = Camera.transform.localPosition;
                 localPosition = new Vector3(
                     Mathf.Lerp(localPosition.x, _restPosition.x, TransitionSpeed * Time.deltaTime),
                     Mathf.Lerp(localPosition.y, _restPosition.y, TransitionSpeed * Time.deltaTime),
                     _restPosition.z
                 );
-                _camera.transform.localPosition = localPosition;
+                Camera.transform.localPosition = localPosition;
             }
         }
 
