@@ -39,13 +39,16 @@ namespace Portal
 
             // Calculate translation and rotation of MainCamera in Source space.
             var sourceWorldToLocalMatrix = _source.worldToLocalMatrix;
-            var cameraPositionInSourceSpace = sourceWorldToLocalMatrix * new Vector4(mainCameraPosition.x, mainCameraPosition.y, mainCameraPosition.z, 1.0f);
+            var cameraPositionInSourceSpace = sourceWorldToLocalMatrix *
+                                              new Vector4(mainCameraPosition.x, mainCameraPosition.y,
+                                                  mainCameraPosition.z, 1.0f);
             var cameraRotationInSourceSpace = sourceWorldToLocalMatrix.rotation * mainCameraTransform.rotation;
-            
+
             // Transform Portal Camera to World Space relative to Destination transform,
             // matching the Main Camera position/orientation
             Transform portalCameraTransform;
-            (portalCameraTransform = _portalCamera.transform).position = destination.TransformPoint(cameraPositionInSourceSpace);
+            (portalCameraTransform = _portalCamera.transform).position =
+                destination.TransformPoint(cameraPositionInSourceSpace);
             portalCameraTransform.rotation = destination.rotation * cameraRotationInSourceSpace;
 
             // Calculate clip plane for portal (for culling of objects in-between destination camera and portal)
@@ -78,8 +81,7 @@ namespace Portal
 
             return Matrix4x4.Transpose(Matrix4x4.Inverse(cam.worldToCameraMatrix)) * clipPlaneWorldSpace;
         }
-        
+
         #endregion
-        
     }
 }
