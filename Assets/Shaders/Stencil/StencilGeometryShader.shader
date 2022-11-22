@@ -16,7 +16,6 @@ Shader "ImpossibleArchitecture/StencilGeometry" {
             Ref [_StencilMask]
             Comp equal
             Pass keep
-            Fail keep
         }
 
         CGPROGRAM

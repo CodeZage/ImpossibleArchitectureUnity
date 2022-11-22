@@ -60,6 +60,12 @@ namespace Portal
 
         #region Private Functions
 
+        /// <summary>
+        /// Moves the cameras clip plane so geometry between the portal camera and portal isn't rendered.
+        /// </summary>
+        /// <param name="cam">The camera whose clip planes we want to manipulate.</param>
+        /// <param name="target">The center of the portal.</param>
+        /// <returns>The new clip planes for the camera.</returns>
         private Vector4 CalculateClipPlane(Camera cam, Transform target)
         {
             var forward = target.forward;

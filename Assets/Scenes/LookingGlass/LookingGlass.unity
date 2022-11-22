@@ -278,7 +278,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: bc803925d76e7404d858fa18365233d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3959c53ab2079f40a5a14d2703c5484, type: 2}
+      objectReference: {fileID: 2100000, guid: a14dcbf6287d0714fa8cbd7a15b6291f, type: 2}
     - target: {fileID: 919132149155446097, guid: bc803925d76e7404d858fa18365233d3, type: 3}
       propertyPath: m_Name
       value: Suzanna
@@ -589,7 +589,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 057562bb70d3135439b2d27d57f3e07b, type: 2}
+  - {fileID: 2100000, guid: 63c44b6378a940e4fa197ba0132c7e37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
